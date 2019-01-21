@@ -12,6 +12,9 @@
 		D74161B821EF2A970084A013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74161B621EF2A970084A013 /* Main.storyboard */; };
 		D74161BA21EF2A9A0084A013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74161B921EF2A9A0084A013 /* Assets.xcassets */; };
 		D74161BD21EF2A9A0084A013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74161BB21EF2A9A0084A013 /* LaunchScreen.storyboard */; };
+		D74161C521EF43F90084A013 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D74161C421EF43F90084A013 /* Nunito-Regular.ttf */; };
+		D76676BE21F0B604003DD2F4 /* Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76676BD21F0B604003DD2F4 /* Creation.swift */; };
+		D76676C021F0B656003DD2F4 /* ColorSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76676BF21F0B656003DD2F4 /* ColorSwatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		D74161B921EF2A9A0084A013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D74161BC21EF2A9A0084A013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D74161BE21EF2A9A0084A013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D74161C421EF43F90084A013 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		D76676BD21F0B604003DD2F4 /* Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creation.swift; sourceTree = "<group>"; };
+		D76676BF21F0B656003DD2F4 /* ColorSwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,49 @@
 		D74161B121EF2A970084A013 /* FrameIT */ = {
 			isa = PBXGroup;
 			children = (
-				D74161B221EF2A970084A013 /* AppDelegate.swift */,
-				D74161B421EF2A970084A013 /* ViewController.swift */,
+				D74161C721EF4FF50084A013 /* Model */,
+				D74161C821EF50350084A013 /* View */,
+				D74161C921EF50630084A013 /* Controller */,
+				D74161CA21EF508B0084A013 /* Supporting files */,
+			);
+			path = FrameIT;
+			sourceTree = "<group>";
+		};
+		D74161C721EF4FF50084A013 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D76676BD21F0B604003DD2F4 /* Creation.swift */,
+				D76676BF21F0B656003DD2F4 /* ColorSwatch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D74161C821EF50350084A013 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				D74161B621EF2A970084A013 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D74161C921EF50630084A013 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D74161B421EF2A970084A013 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D74161CA21EF508B0084A013 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				D74161C421EF43F90084A013 /* Nunito-Regular.ttf */,
+				D74161B221EF2A970084A013 /* AppDelegate.swift */,
 				D74161B921EF2A9A0084A013 /* Assets.xcassets */,
 				D74161BB21EF2A9A0084A013 /* LaunchScreen.storyboard */,
 				D74161BE21EF2A9A0084A013 /* Info.plist */,
 			);
-			path = FrameIT;
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +165,7 @@
 			files = (
 				D74161BD21EF2A9A0084A013 /* LaunchScreen.storyboard in Resources */,
 				D74161BA21EF2A9A0084A013 /* Assets.xcassets in Resources */,
+				D74161C521EF43F90084A013 /* Nunito-Regular.ttf in Resources */,
 				D74161B821EF2A970084A013 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76676BE21F0B604003DD2F4 /* Creation.swift in Sources */,
+				D76676C021F0B656003DD2F4 /* ColorSwatch.swift in Sources */,
 				D74161B521EF2A970084A013 /* ViewController.swift in Sources */,
 				D74161B321EF2A970084A013 /* AppDelegate.swift in Sources */,
 			);
