@@ -18,16 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-icon-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-bL-LMU">
-                                <rect key="frame" x="16" y="82" width="343" height="290"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-icon-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-bL-LMU">
+                                <rect key="frame" x="17.5" y="82" width="340" height="290"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="X2b-th-vAQ"/>
+                                    <constraint firstAttribute="height" constant="290" id="irX-4S-HnD"/>
+                                </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-name-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="5Dz-oB-pUg">
-                                <rect key="frame" x="72" y="380" width="232" height="47"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-name-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="5Dz-oB-pUg">
+                                <rect key="frame" x="72.5" y="382" width="230" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1cA-ov-idC"/>
+                                    <constraint firstAttribute="width" constant="230" id="mkI-Gq-d7V"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.029940720649999999" green="0.74461275339999999" blue="0.72037446500000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Dz-oB-pUg" firstAttribute="top" secondItem="hC8-bL-LMU" secondAttribute="bottom" constant="10" id="HaI-On-rIz"/>
+                            <constraint firstItem="hC8-bL-LMU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="62" id="LU7-qQ-CxG"/>
+                            <constraint firstItem="5Dz-oB-pUg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cCu-2r-bpV"/>
+                            <constraint firstItem="hC8-bL-LMU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="e4M-0o-4ab"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
