@@ -13,6 +13,7 @@ import AVFoundation
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var creationFrame: UIView!
     @IBOutlet weak var creationImageView: UIImageView!
+    @IBOutlet weak var creationUnicornView: UIImageView!
     @IBOutlet weak var startOverButton: UIButton!
     @IBOutlet weak var colorLaber: UILabel!
     @IBOutlet weak var colorsContainer: UIView!
@@ -23,6 +24,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var colorSwatches = [ColorSwatch].init()
     var creation = Creation.init()
     var initialImageViewOffset = CGPoint()
+    var initialUnicornViewOffset = CGPoint()
     let colorUserDefaultKey = "ColorIndex"
     var savedColorSwatchIndex: Int {
         get {
@@ -50,6 +52,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     @objc func changeImage(_ sender: UITapGestureRecognizer) {
         displayImagePickingOptions()
+        let unicornAppearRandom = Int(arc4random_uniform(UInt32(2)))
+                if unicornAppearRandom == 0 {
+                    flyingUnicorn()
+                }
+    }
+    func flyingUnicorn() {
+        creationUnicornView.isHidden = false
+        initialUnicornViewOffset = creationUnicornView.frame.origin
+        UIView.animate(withDuration: 3, delay: 3, options: .curveEaseInOut, animations: {
+            self.creationUnicornView.frame.origin.x += 250
+            self.creationUnicornView.frame.origin.y -= 520
+        }) {_ in
+            self.creationUnicornView.isHidden = true
+            self.creationUnicornView.frame.origin = self.initialUnicornViewOffset
+            }
+    }
+    func resetUnicornPosition() {
+        creationUnicornView.transform = creationUnicornView.transform.translatedBy(x: initialUnicornViewOffset.x, y: initialUnicornViewOffset.y)
+        
     }
     @objc func moveImageView(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: creationImageView.superview)
@@ -170,7 +191,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true) {
-            //code to execute after the controller finished presenting
+        //code to execute after the controller finished presenting
         }
     }
     func displayCamera() {
@@ -270,12 +291,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
         return nil
     }
-    
-    
     func configure() {
+        //hide unicorn image
+        creationUnicornView.isHidden = true
         //collect images
         collectLocalImageSet()
-        
         //collect colors
         collectColors()
         
@@ -283,6 +303,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         creation.colorSwatch = colorSwatches[savedColorSwatchIndex]
         
         //apply creation data to the view
+        creationUnicornView.image = creation.unicorn
         creationImageView.image = creation.image
         creationFrame.backgroundColor = creation.colorSwatch.color
         colorLaber.text = creation.colorSwatch.caption

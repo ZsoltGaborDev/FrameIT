@@ -11,10 +11,14 @@ import UIKit
 
 class Creation {
     var image: UIImage
+    var unicorn: UIImage
     var colorSwatch: ColorSwatch
     
     static var defaultImage: UIImage {
         return UIImage.init(named: "FrameIT-placeholder")!
+    }
+    static var defaultUnicorn: UIImage {
+        return UIImage.init(named: "Unicorn")!
     }
     static var defaultColorSwatch: ColorSwatch {
         return ColorSwatch (caption: "Simply Yellow ", color: .yellow)
@@ -23,6 +27,7 @@ class Creation {
     init() {
         //stored property initialization
         image = Creation.defaultImage
+        unicorn = Creation.defaultUnicorn
         colorSwatch = Creation.defaultColorSwatch
     }
     
@@ -36,6 +41,7 @@ class Creation {
     
     func reset(colorSwatch: ColorSwatch?) {
         image = Creation.defaultImage
+        unicorn = Creation.defaultUnicorn
         if let userColorSwatch = colorSwatch {
             self.colorSwatch = userColorSwatch
         }

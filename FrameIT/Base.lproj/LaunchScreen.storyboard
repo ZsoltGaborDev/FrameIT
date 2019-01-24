@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad12_9rounded" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,18 +15,18 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-icon-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-bL-LMU">
-                                <rect key="frame" x="608" y="86" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="82" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="X2b-th-vAQ"/>
                                     <constraint firstAttribute="height" constant="150" id="irX-4S-HnD"/>
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="FrameIT-app-name-template-white" translatesAutoresizingMaskIntoConstraints="NO" id="5Dz-oB-pUg">
-                                <rect key="frame" x="608" y="246" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="242" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1cA-ov-idC"/>
                                     <constraint firstAttribute="width" constant="150" id="mkI-Gq-d7V"/>
