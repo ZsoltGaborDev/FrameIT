@@ -20,6 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var shareButton: UIButton!
     
     var localImages = [UIImage].init()
+    var unicornImages = [UIImage].init()
     var defaults = UserDefaults.standard
     var colorSwatches = [ColorSwatch].init()
     var creation = Creation.init()
@@ -52,25 +53,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     @objc func changeImage(_ sender: UITapGestureRecognizer) {
         displayImagePickingOptions()
-        let unicornAppearRandom = Int(arc4random_uniform(UInt32(2)))
-                if unicornAppearRandom == 0 {
-                    flyingUnicorn()
-                }
-    }
-    func flyingUnicorn() {
-        creationUnicornView.isHidden = false
-        initialUnicornViewOffset = creationUnicornView.frame.origin
-        UIView.animate(withDuration: 3, delay: 3, options: .curveEaseInOut, animations: {
-            self.creationUnicornView.frame.origin.x += 250
-            self.creationUnicornView.frame.origin.y -= 520
-        }) {_ in
-            self.creationUnicornView.isHidden = true
-            self.creationUnicornView.frame.origin = self.initialUnicornViewOffset
-            }
-    }
-    func resetUnicornPosition() {
-        creationUnicornView.transform = creationUnicornView.transform.translatedBy(x: initialUnicornViewOffset.x, y: initialUnicornViewOffset.y)
-        
     }
     @objc func moveImageView(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: creationImageView.superview)
@@ -110,6 +92,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         for name in imageNames {
             if let image = UIImage.init(named: name) {
                 localImages.append(image)
+            }
+        }
+    }
+    func collectLocalUnicornSet() {
+        unicornImages.removeAll()
+        let unicornNames = ["Unicorn", "Unicorn2", "Unicorn3", "Unicorn4"]
+        for name in unicornNames {
+            if let unicorn = UIImage.init(named: name) {
+                unicornImages.append(unicorn)
             }
         }
     }
@@ -273,6 +264,33 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             creation.image = newImage
             animateImageChange()
         }
+        //random option for make unicorn fly
+        let unicornAppearRandom = Int(arc4random_uniform(UInt32(2)))
+        if unicornAppearRandom == 0 {
+            flyingUnicorn()
+        }
+    }
+    func flyingUnicorn() {
+        //picking random unicorn image
+        let unicornImage = randomUnicorn()
+        creationUnicornView.image = unicornImage
+        initialUnicornViewOffset = self.creationUnicornView.frame.origin
+        self.view.layoutIfNeeded()
+        // make unicorn visible,move it to the center of the image, return to the initial position and at the end make it dissapear.
+        UIView.animate(withDuration: 3, delay: 1.5, options: .curveEaseInOut, animations: {
+            self.creationUnicornView.isHidden = false
+            self.creationUnicornView.frame.origin = self.creationImageView.center
+            self.view.layoutIfNeeded()
+            print(self.creationUnicornView.frame.origin.x)
+            print(self.creationUnicornView.frame.origin.y)})
+            {_ in
+            UIView.animate(withDuration: 3, delay: 1, options: .transitionCrossDissolve, animations: {
+                self.creationUnicornView.frame.origin = self.initialUnicornViewOffset
+                self.view.layoutIfNeeded()})
+                {_ in
+                self.creationUnicornView.isHidden = true
+                self.creationUnicornView.frame.origin = self.initialUnicornViewOffset
+                    self.view.layoutIfNeeded()}}
     }
     func pickRandom() {
         processPicked(image: randomImage())
@@ -291,6 +309,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
         return nil
     }
+    func randomUnicorn() -> UIImage? {
+        let currentUnicorn = creationUnicornView.image
+
+        if unicornImages.count > 0 {
+            while true {
+                let randomIndex = Int(arc4random_uniform(UInt32(unicornImages.count)))
+                let newUnicorn = unicornImages[randomIndex]
+                if newUnicorn != currentUnicorn {
+                    return newUnicorn
+                }
+            }
+        }
+        return nil
+    }
     func configure() {
         //hide unicorn image
         creationUnicornView.isHidden = true
@@ -298,6 +330,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         collectLocalImageSet()
         //collect colors
         collectColors()
+        //collect unicorn images
+        collectLocalUnicornSet()
         
         //set creation data object
         creation.colorSwatch = colorSwatches[savedColorSwatchIndex]
