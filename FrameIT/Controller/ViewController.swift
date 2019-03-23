@@ -279,12 +279,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // make unicorn visible,move it to the center of the image, return to the initial position and at the end make it dissapear.
         UIView.animate(withDuration: 3, delay: 1.5, options: .curveEaseInOut, animations: {
             self.creationUnicornView.isHidden = false
-            self.creationUnicornView.frame.origin = self.creationImageView.center
-            self.view.layoutIfNeeded()
-            print(self.creationUnicornView.frame.origin.x)
-            print(self.creationUnicornView.frame.origin.y)})
+            self.creationUnicornView.center = self.view.center
+            self.view.layoutIfNeeded()})
             {_ in
-            UIView.animate(withDuration: 3, delay: 1, options: .transitionCrossDissolve, animations: {
+            UIView.animate(withDuration: 3, delay: 1, options: .curveEaseInOut, animations: {
                 self.creationUnicornView.frame.origin = self.initialUnicornViewOffset
                 self.view.layoutIfNeeded()})
                 {_ in
@@ -297,7 +295,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     func randomImage() -> UIImage? {
         let currentImage = creationImageView.image
-        
         if localImages.count > 0 {
             while true {
                 let randomIndex = Int(arc4random_uniform(UInt32(localImages.count)))
